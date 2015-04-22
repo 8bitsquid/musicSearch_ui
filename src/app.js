@@ -7,7 +7,7 @@ angular.module('ualib.musicSearch', [
 ])
 
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/musicSearch/:tk?/s/:s', {
+        $routeProvider.when('/musicSearch/:tk?/show/:show', {
             templateUrl: 'musicSearch.tpl.html',
             controller: 'musicSearchCtrl',
             resolve: {
@@ -38,7 +38,7 @@ angular.module('ualib.musicSearch', [
             if ($scope.searchText)
                 newPath = newPath + $scope.searchText + '/';
 
-            newPath = newPath + 's/' + $scope.perPage;
+            newPath = newPath + 'show/' + $scope.perPage;
 
             $location.path(newPath);
         }
