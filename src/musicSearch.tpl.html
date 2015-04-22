@@ -1,0 +1,78 @@
+<h2>Music Video Database Search</h2>
+
+<form ng-submit="search()">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search music and video database" ng-model="searchText">
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary">
+                Search
+                <span class="fa fa-fw fa-search"></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="col-md-12 form-group form-inline">
+    <label for="filterBy">Filter <strong>{{ms.results.length}}</strong> results by</label>
+    <div id="filterBy">
+        <input type="text" class="form-control" placeholder="Title" ng-model="titleFilter">
+        <input type="text" class="form-control" placeholder="Description" ng-model="descrFilter">
+        <input type="text" class="form-control" placeholder="Genre" ng-model="genreFilter">
+        <input type="text" class="form-control" placeholder="Language" ng-model="languageFilter">
+        <input type="text" class="form-control" placeholder="Keywords" ng-model="keywordsFilter">
+    </div>
+</div>
+
+<div class="text-center">
+    <pagination total-items="filteredResults.length" ng-model="currentPage" max-size="maxPageSize" class="pagination-sm"
+                boundary-links="true" rotate="false" items-per-page="perPage"></pagination>
+</div>
+
+<div class="row">
+    <div class="col-md-12" ng-repeat="item in filteredResults = (ms.results
+                                                         | filter:{title:titleFilter}:compare
+                                                         | filter:{notes:descrFilter}:compare
+                                                         | filter:{genre:genreFilter}:compare
+                                                         | filter:{language:languageFilter}:compare
+                                                         | filter:{title:keywordsFilter}:compare
+                                                         | orderBy:'title')
+                                                     | startFrom:(currentPage-1)*perPage | limitTo:perPage">
+        <div class="col-md-12">
+            <div class="col-md-10">
+                <h4>
+                    {{item.title}}
+                    <small>{{item.genre}}</small>
+                    <small ng-show="item.genre && item.series_title"><span class="fa fa-fw fa-ellipsis-v"></span></small>
+                    <small>{{item.series_title}}</small>
+                </h4>
+            </div>
+            <div class="col-md-2">
+                <span>
+                    <h4><small>{{item.call_number}}</small></h4>
+                </span>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-8">
+                    <p style="text-align: justify;">{{item.notes}}</p>
+                    <p><small>{{item.keywords}}</small></p>
+                </div>
+                <div class="col-md-1">
+                    {{item.language}}
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+<div class="text-center">
+    <pagination total-items="filteredResults.length" ng-model="currentPage" max-size="maxPageSize" class="pagination-sm"
+                boundary-links="true" rotate="false" items-per-page="perPage"></pagination>
+</div>
+
