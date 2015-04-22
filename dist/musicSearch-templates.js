@@ -62,7 +62,7 @@ angular.module("musicSearch.tpl.html", []).run(["$templateCache", function($temp
     "                </div>\n" +
     "                <div class=\"col-md-8\">\n" +
     "                    <p style=\"text-align: justify;\">{{item.notes}}</p>\n" +
-    "                    <p><small>{{item.keywords}}</small></p>\n" +
+    "                    <p ng-show=\"item.keywords\"><small>Keywords: </small> {{item.keywords}}</p>\n" +
     "                </div>\n" +
     "                <div class=\"col-md-1\">\n" +
     "                    {{item.language}}\n" +

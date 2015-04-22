@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-8">
                     <p style="text-align: justify;">{{item.notes}}</p>
-                    <p><small>{{item.keywords}}</small></p>
+                    <p ng-show="item.keywords"><small>Keywords: </small> {{item.keywords}}</p>
                 </div>
                 <div class="col-md-1">
                     {{item.language}}
