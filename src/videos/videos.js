@@ -1,25 +1,4 @@
-angular.module('ualib.musicSearch', [
-    'ngRoute',
-    'ngResource',
-    'ngAnimate',
-    'ngSanitize',
-    'angular.filter',
-    'ui.bootstrap',
-    'ui.utils',
-    'duScroll',
-    'ualib.musicSearch.templates'
-]);
-
-angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musicSearch')
-
-/**
- * Transform the JSON response - this allows the transformed values to be cached via Angular's $resource service.
- */
-    .factory('videosFactory', ['$resource', '$filter', function($resource, $filter){
-        return $resource('https://wwwdev2.lib.ua.edu/musicsearch/api/:videos', {videos: 'showall'}, {
-            cache: true
-        });
-    }]);;angular.module('ualib.musicSearch')
+angular.module('ualib.musicSearch')
 
     .config(['$routeProvider', function($routeProvider){
         $routeProvider
@@ -175,7 +154,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             var params = $location.search();
             var scopeFacets = {};
             angular.copy($scope.vid, scopeFacets);
-            
+
             $scope.activeFilters = params;
 
             if (params['page']){
