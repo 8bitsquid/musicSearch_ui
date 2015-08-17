@@ -110,6 +110,9 @@
 
                 <p class="text-justify" ng-bind-html="item.notes | highlight:vid.search"></p>
             </div>
+            <div class="details-context">
+                <span ng-bind-html="item.keywords | highlight:vid.search"></span>
+            </div>
         </div>
 
 
