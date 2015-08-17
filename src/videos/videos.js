@@ -74,7 +74,11 @@ angular.module('ualib.musicSearch')
         var filterWatcher = $scope.$watch('vid', function(newVal, oldVal){
             var filtered = videos;
 
-            filtered = $filter('filter')(filtered, newVal.genre);
+            filtered = $filter('filter')(filtered, newVal.genre, function(actual, expected){
+                console.log('Actual: ' + actual);
+                console.log('Expected: ' + expected);
+                return angular.equals(actual.genre, expected);
+            });
             filtered = $filter('filter')(filtered, newVal.language);
             filtered = $filter('filter')(filtered, newVal.format);
 
