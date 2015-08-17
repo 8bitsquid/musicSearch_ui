@@ -97,17 +97,15 @@
                 <h4 class="media-heading">
                     <span ng-bind-html="item.title | highlight:vid.search"></span>
 
-                    <small class="pull-right">
-                        <span class="label label-success" ng-if="item.hasFullText == 'A'">All Full Text</span>
-                        <span class="label label-info" ng-if="item.hasFullText == 'P'">Primarily Full Text</span>
-                        <span class="label label-warning" ng-if="item.hasFullText == 'S'">Some Full Text</span>
-                        <span class="label label-danger" ng-if="item.hasFullText == 'N'">No Full Text</span>
+                    <small>
+                        <span ng-bind-html="item.series_title | highlight:vid.search"></span>
                     </small>
                 </h4>
 
                 <div class="details-context">
                     <span ng-bind-html="item.call_number | highlight:vid.search"></span>
-                    <span ng-bind-html="item.series_title | highlight:vid.search" ng-if="item.series_title"></span>
+                    <span ng-bind-html="item.genre | highlight:vid.genre" ng-if="item.genre"></span>
+                    <span ng-bind-html="item.language | highlight:vid.language" ng-if="item.language"></span>
                 </div>
 
                 <p class="text-justify" ng-bind-html="item.notes | highlight:vid.search"></p>
