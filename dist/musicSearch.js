@@ -15,9 +15,12 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
 /**
  * Transform the JSON response - this allows the transformed values to be cached via Angular's $resource service.
  */
-    .factory('videosFactory', ['$resource', '$filter', function($resource, $filter){
-        return $resource('https://wwwdev2.lib.ua.edu/musicsearch/api/:videos', {videos: 'showall'}, {
-            cache: true
+    .factory('videosFactory', ['$resource', function($resource){
+        return $resource('//wwwdev2.lib.ua.edu/musicsearch/api/:videos', {videos: 'showall'}, {
+            get: {
+                method: 'GET',
+                cache: true
+            }
         });
     }]);;angular.module('ualib.musicSearch')
 
@@ -26,14 +29,14 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             .when('/videos', {
                 reloadOnSearch: false,
                 resolve: {
-                    filters: function(videosFactory){
+                    filters: ['videosFactory', function(videosFactory){
                         return videosFactory.get({videos: 'genres'})
                             .$promise.then(function(data){
                                 var newData = data;
                                 for (var f in data){
                                     if (f === 'genres' || f === 'languages'){
                                         newData[f] = data[f].filter(function(d){
-                                            return d.value != 0;
+                                            return d.value !== 0;
                                         });
                                     }
                                 }
@@ -47,8 +50,8 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                                     config: config
                                 });
                             });
-                    },
-                    videos: function(videosFactory){
+                    }],
+                    videos: ['videosFactory', function(videosFactory){
                         return videosFactory.get()
                             .$promise.then(function(data){
                                 return data;
@@ -61,11 +64,11 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                                     config: config
                                 });
                             });
-                    }
+                    }]
                 },
                 templateUrl: 'videos/videos-list.tpl.html',
                 controller: 'VideosListCtrl'
-            })
+            });
     }])
 
     .controller('VideosListCtrl', ['$scope', 'videos', 'filters', '$filter' ,'$location' ,'$document', function($scope, vid, filters, $filter, $location, $document){
@@ -86,7 +89,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
 
                 //processFacets(videos);
             });
-        })
+        });
 
         $scope.$on('$locationChangeSuccess', function(){
             paramsToScope();
@@ -138,7 +141,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
         $scope.pageChange = function(){
 
             scopeToParams({page: $scope.pager.page});
-            $document.duScrollTo(0, 30, 500, function (t) { return (--t)*t*t+1 });
+            $document.duScrollTo(0, 30, 500, function (t) { return (--t)*t*t+1; });
         };
 
         $scope.$on('$destroy', function(){
@@ -178,15 +181,15 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
 
             $scope.activeFilters = params;
 
-            if (params['page']){
-                $scope.pager.page = params['page'];
+            if (params.page){
+                $scope.pager.page = params.page;
             }
 
             angular.forEach(scopeFacets, function(val, key){
 
                 if (angular.isDefined(params[key])){
 
-                    if (key == 'genres' || key == 'languages'){
+                    if (key === 'genres' || key === 'languages'){
                         var filters = {};
                         params[key].split(',').forEach(function(filter){
                             filters[filter] = true;

@@ -12,7 +12,7 @@ angular.module('ualib.musicSearch')
                                 for (var f in data){
                                     if (f === 'genres' || f === 'languages'){
                                         newData[f] = data[f].filter(function(d){
-                                            return d.value != 0;
+                                            return d.value !== 0;
                                         });
                                     }
                                 }
@@ -44,7 +44,7 @@ angular.module('ualib.musicSearch')
                 },
                 templateUrl: 'videos/videos-list.tpl.html',
                 controller: 'VideosListCtrl'
-            })
+            });
     }])
 
     .controller('VideosListCtrl', ['$scope', 'videos', 'filters', '$filter' ,'$location' ,'$document', function($scope, vid, filters, $filter, $location, $document){
@@ -65,7 +65,7 @@ angular.module('ualib.musicSearch')
 
                 //processFacets(videos);
             });
-        })
+        });
 
         $scope.$on('$locationChangeSuccess', function(){
             paramsToScope();
@@ -117,7 +117,7 @@ angular.module('ualib.musicSearch')
         $scope.pageChange = function(){
 
             scopeToParams({page: $scope.pager.page});
-            $document.duScrollTo(0, 30, 500, function (t) { return (--t)*t*t+1 });
+            $document.duScrollTo(0, 30, 500, function (t) { return (--t)*t*t+1; });
         };
 
         $scope.$on('$destroy', function(){
@@ -157,15 +157,15 @@ angular.module('ualib.musicSearch')
 
             $scope.activeFilters = params;
 
-            if (params['page']){
-                $scope.pager.page = params['page'];
+            if (params.page){
+                $scope.pager.page = params.page;
             }
 
             angular.forEach(scopeFacets, function(val, key){
 
                 if (angular.isDefined(params[key])){
 
-                    if (key == 'genres' || key == 'languages'){
+                    if (key === 'genres' || key === 'languages'){
                         var filters = {};
                         params[key].split(',').forEach(function(filter){
                             filters[filter] = true;

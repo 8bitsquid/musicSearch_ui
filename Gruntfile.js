@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'dist/musicSearch.min.css': 'src/**/*.less'
+                    'dist/musicSearch.min.css': ['src/**/*.less']
                 },
                 options: {
                     compress: true
@@ -63,10 +63,22 @@ module.exports = function(grunt) {
                 }
             }
         },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            app: {
+                files: [
+                    {
+                        'dist/musicSearch.js': ['dist/musicSearch.js']
+                    }
+                ]
+            }
+        },
         uglify: {
             dist: {
                 files: {
-                    'dist/musicSearch.min.js': 'src/**/*.js'
+                    'dist/musicSearch.min.js': ['dist/musicSearch-templates.js','dist/musicSearch.js']
                 }
             }
         },
@@ -100,10 +112,10 @@ module.exports = function(grunt) {
         'concat'
     ]);
     grunt.registerTask('build', [
-        //'html2js:build',
         'jshint',
-        'copy',
+        'concat:index',
         'less:build',
+        'ngAnnotate',
         'uglify'
     ]);
 };
