@@ -10,7 +10,7 @@
   "moduleType": [
     "node"
   ],
-  "main": [],
+  "main": ["musicSearch.min.js", "musicSearch.min.css"],
   "license": "ECL-2.0",
   "private": true,
   "ignore": [
