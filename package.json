@@ -1,6 +1,6 @@
 {
   "name": "musicSearch_ui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Front end UI for the UA Music Library search",
   "main": [],
   "scripts": {
