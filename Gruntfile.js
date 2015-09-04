@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         html2js:{
             dev: {
                 src: 'src/**/*.tpl.html',
-                dest: 'dist/musicSearch-templates.js',
+                dest: 'tmp/templates.js',
                 module: 'ualib.musicSearch.templates'
             }
         },
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: 'src/**/*.js',
+                src: ['tmp/templates.js', 'src/**/*.js'],
                 dest: 'dist/musicSearch.js'
             },
             index: {
@@ -78,9 +78,12 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    'dist/musicSearch.min.js': ['dist/musicSearch-templates.js','dist/musicSearch.js']
+                    'dist/musicSearch.min.js': ['dist/musicSearch.js']
                 }
             }
+        },
+        clean: {
+            app: ['tmp/']
         },
         bump: {
             options: {
@@ -109,13 +112,15 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [
         'html2js:dev',
         'less:dev',
-        'concat'
+        'concat',
+        'clean'
     ]);
     grunt.registerTask('build', [
         'jshint',
         'concat:index',
         'less:build',
         'ngAnnotate',
-        'uglify'
+        'uglify',
+        'clean'
     ]);
 };
