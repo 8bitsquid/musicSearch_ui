@@ -5,8 +5,8 @@ angular.module('ualib.musicSearch', [
     'ngSanitize',
     'angular.filter',
     'ui.bootstrap',
-    'ui.utils',
     'duScroll',
+    'ualib.ui',
     'ualib.musicSearch.templates'
 ]);
 
