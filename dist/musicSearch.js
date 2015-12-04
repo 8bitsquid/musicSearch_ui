@@ -161,7 +161,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             .when('/videos', {
                 reloadOnSearch: false,
                 resolve: {
-                    filters: function(videosFactory){
+                    filters: ['videosFactory', function(videosFactory){
                         return videosFactory.get({videos: 'genres'})
                             .$promise.then(function(data){
                                 var newData = data;
@@ -182,8 +182,8 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                                     config: config
                                 });
                             });
-                    },
-                    videos: function(videosFactory){
+                    }],
+                    videos: ['videosFactory', function(videosFactory){
                         return videosFactory.get()
                             .$promise.then(function(data){
                                 return data;
@@ -196,7 +196,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                                     config: config
                                 });
                             });
-                    }
+                    }]
                 },
                 templateUrl: 'videos/videos-list.tpl.html',
                 controller: 'VideosListCtrl'
