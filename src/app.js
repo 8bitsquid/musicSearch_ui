@@ -1,3 +1,13 @@
+/**
+ * @ngdoc overview
+ * @name index
+ *
+ * @description
+ * # The Music Library's Videos search application.
+ * ## URL route [/#/videos](http://www.lib.ua.edu/#/videos)
+ *
+ */
+
 angular.module('ualib.musicSearch', [
     'ngRoute',
     'ngResource',
