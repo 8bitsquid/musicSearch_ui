@@ -2,135 +2,151 @@ angular.module('ualib.musicSearch.templates', ['videos/videos-list.tpl.html']);
 
 angular.module("videos/videos-list.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("videos/videos-list.tpl.html",
-    "<div class=\"jumbotron bg-transparent\">\n" +
-    "    <div class=\"row\">\n" +
-    "        <div class=\"col-md-7\">\n" +
-    "            <h1>Video Database</h1>\n" +
-    "        </div>\n" +
-    "        <div class=\"col-md-5\">\n" +
-    "            <div class=\"well\">\n" +
-    "                <p class=\"lead\"> Videos are available through the Music Library</p>\n" +
-    "                <a href=\"https://wwwdev2.lib.ua.edu/libraries-and-collections/music-library/\" class=\"btn btn-primary\" title=\"Music Library\">Get more info <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
+    "<div class=\"jumbotron-header\">\n" +
+    "    <div class=\"jumbotron\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-7\">\n" +
+    "                    <h1>Video Database</h1>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-md-5\">\n" +
+    "                    <div class=\"well\">\n" +
+    "                        <p class=\"lead\"> Videos are available through the Music Library</p>\n" +
+    "                        <a href=\"https://wwwdev2.lib.ua.edu/libraries-and-collections/music-library/\" class=\"btn btn-primary\" title=\"Music Library\">Get more info <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
     "\n" +
-    "<div class=\"row\">\n" +
-    "    <div class=\"col-md-3 col-md-push-9\">\n" +
-    "        <form class=\"facets-form\">\n" +
-    "            <div class=\"form-group\">\n" +
+    "<div class=\"container\">\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-md-3 col-md-push-9\">\n" +
+    "            <form class=\"facets-form\">\n" +
+    "                <div class=\"form-group\">\n" +
     "                <span class=\"page-header\">\n" +
     "                    <h4>Filter Videos By</h4>\n" +
     "                </span>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <input type=\"text\" class=\"form-control\" ng-model=\"vid.search\" placeholder=\"Keyword search\">\n" +
-    "            </div>\n" +
+    "                </div>\n" +
+    "                <div class=\"form-group\">\n" +
+    "                    <input type=\"text\" class=\"form-control\" ng-model=\"vid.search\" placeholder=\"Keyword search\">\n" +
+    "                </div>\n" +
     "\n" +
-    "            <div class=\"form-group hidden-xs\">\n" +
-    "                <h5>Format</h5>\n" +
-    "                <div class=\"facet-group\">\n" +
-    "                    <div class=\"btn-group btn-group-justified\">\n" +
-    "                        <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"''\">All</label>\n" +
-    "                        <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"'dvd'\">DVD</label>\n" +
-    "                        <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"'vcr'\">VHS</label>\n" +
+    "                <div class=\"form-group hidden-xs\">\n" +
+    "                    <h5>Format</h5>\n" +
+    "                    <div class=\"facet-group\">\n" +
+    "                        <div class=\"btn-group btn-group-justified\">\n" +
+    "                            <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"''\">All</label>\n" +
+    "                            <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"'dvd'\">DVD</label>\n" +
+    "                            <label class=\"btn btn-default\" ng-model=\"vid.format\" btn-radio=\"'vcr'\">VHS</label>\n" +
+    "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "            </div>\n" +
     "\n" +
-    "            <div class=\"form-group hidden-xs\">\n" +
-    "                <h5>Genre</h5>\n" +
-    "                <div class=\"facet-group\">\n" +
-    "                    <div class=\"radio\">\n" +
-    "                        <label>\n" +
-    "                            <input type=\"radio\" ng-model=\"vid.genre\" value=\"\">\n" +
-    "                            All Genres\n" +
-    "                        </label>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"radio\" ng-repeat=\"genre in genres\">\n" +
-    "                        <label>\n" +
-    "                            <input type=\"radio\" ng-model=\"vid.genre\" ng-value=\"genre.label\">\n" +
-    "                            {{genre.label}}\n" +
-    "                        </label>\n" +
+    "                <div class=\"form-group hidden-xs\">\n" +
+    "                    <h5>Genre</h5>\n" +
+    "                    <div class=\"facet-group\">\n" +
+    "                        <div class=\"radio\">\n" +
+    "                            <label>\n" +
+    "                                <input type=\"radio\" ng-model=\"vid.genre\" value=\"\">\n" +
+    "                                All Genres\n" +
+    "                            </label>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"radio\" ng-repeat=\"genre in genres\">\n" +
+    "                            <label>\n" +
+    "                                <input type=\"radio\" ng-model=\"vid.genre\" ng-value=\"genre.label\">\n" +
+    "                                {{genre.label}}\n" +
+    "                            </label>\n" +
+    "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "            </div>\n" +
     "\n" +
-    "            <div class=\"form-group hidden-xs\">\n" +
-    "                <h5>Language</h5>\n" +
-    "                <div class=\"facet-group\">\n" +
-    "                    <div class=\"radio\">\n" +
-    "                        <label>\n" +
-    "                            <input type=\"radio\" ng-model=\"vid.language\" value=\"\">\n" +
-    "                            All Languages\n" +
-    "                        </label>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"radio\" ng-repeat=\"lang in languages\">\n" +
-    "                        <label>\n" +
-    "                            <input type=\"radio\" ng-model=\"vid.language\" ng-value=\"lang.label\">\n" +
-    "                            {{lang.label}}\n" +
-    "                        </label>\n" +
+    "                <div class=\"form-group hidden-xs\">\n" +
+    "                    <h5>Language</h5>\n" +
+    "                    <div class=\"facet-group\">\n" +
+    "                        <div class=\"radio\">\n" +
+    "                            <label>\n" +
+    "                                <input type=\"radio\" ng-model=\"vid.language\" value=\"\">\n" +
+    "                                All Languages\n" +
+    "                            </label>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"radio\" ng-repeat=\"lang in languages\">\n" +
+    "                            <label>\n" +
+    "                                <input type=\"radio\" ng-model=\"vid.language\" ng-value=\"lang.label\">\n" +
+    "                                {{lang.label}}\n" +
+    "                            </label>\n" +
+    "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <button type=\"button\" class=\"btn btn-block btn-primary\" ng-click=\"resetFilters()\"><span class=\"fa fa-fw fa-refresh\"></span> Reset filters</button>\n" +
-    "            </div>\n" +
-    "        </form>\n" +
-    "    </div>\n" +
-    "    <div class=\"col-md-9 col-md-pull-3 videos-list-container\">\n" +
-    "        <p>\n" +
-    "        <h4 class=\"text-right\">Showing {{pager.totalItems}} results</h4>\n" +
-    "        <div ng-if=\"activeFilters.format || activeFilters.genre || activeFilters.language\">\n" +
-    "\n" +
-    "            <ol class=\"breadcrumb facetcrumb\">\n" +
-    "                <li ng-if=\"activeFilters.format\"><strong>Format:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.format = ''\">{{vid.format}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
-    "                <li ng-if=\"activeFilters.genre\"><strong>Genre:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.genre = ''\">{{vid.genre}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
-    "                <li ng-if=\"activeFilters.language\"><strong>Language:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.language = ''\">{{vid.language}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
-    "                <li class=\"pull-right\"><button type=\"button\" class=\"btn btn-primary btn-small reset-btn\" title=\"Reset filters\" ng-click=\"resetFilters()\"><i class=\"fa fa-refresh\"></i></button></li>\n" +
-    "            </ol>\n" +
+    "                <div class=\"form-group\">\n" +
+    "                    <button type=\"button\" class=\"btn btn-block btn-primary\" ng-click=\"resetFilters()\"><span class=\"fa fa-fw fa-refresh\"></span> Reset filters</button>\n" +
+    "                </div>\n" +
+    "            </form>\n" +
     "        </div>\n" +
+    "        <div class=\"col-md-9 col-md-pull-3 videos-list-container\">\n" +
+    "            <p>\n" +
+    "            <h4 class=\"text-right\">Showing {{pager.totalItems}} results</h4>\n" +
+    "            <div ng-if=\"activeFilters.format || activeFilters.genre || activeFilters.language\">\n" +
+    "\n" +
+    "                <ol class=\"breadcrumb facetcrumb\">\n" +
+    "                    <li ng-if=\"activeFilters.format\"><strong>Format:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.format = ''\">{{vid.format}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
+    "                    <li ng-if=\"activeFilters.genre\"><strong>Genre:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.genre = ''\">{{vid.genre}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
+    "                    <li ng-if=\"activeFilters.language\"><strong>Language:</strong> <button type=\"button\" class=\"btn btn-default\" ng-click=\"vid.language = ''\">{{vid.language}} <span class=\"text-muted\" aria-hidden=\"true\">&times;</span></button></li>\n" +
+    "                    <li class=\"pull-right\"><button type=\"button\" class=\"btn btn-primary btn-small reset-btn\" title=\"Reset filters\" ng-click=\"resetFilters()\"><i class=\"fa fa-refresh\"></i></button></li>\n" +
+    "                </ol>\n" +
+    "            </div>\n" +
     "\n" +
     "\n" +
-    "        </p>\n" +
+    "            </p>\n" +
     "\n" +
-    "        <div class=\"media animate-repeat\" ng-repeat=\"item in filteredvidoes | after:(pager.page-1)*pager.perPage | limitTo:20\">\n" +
-    "            <div class=\"media-body\">\n" +
+    "            <div class=\"media animate-repeat\" ng-repeat=\"item in filteredvidoes | after:(pager.page-1)*pager.perPage | limitTo:20\">\n" +
+    "                <div class=\"media-body\">\n" +
     "\n" +
-    "                <h4 class=\"media-heading\">\n" +
-    "                    <span ng-bind-html=\"item.title | highlight:vid.search\"></span>\n" +
+    "                    <h4 class=\"media-heading\">\n" +
+    "                        <span ng-bind-html=\"item.title | highlight:vid.search\"></span>\n" +
     "\n" +
-    "                    <small>\n" +
-    "                        <span ng-bind-html=\"item.series_title | highlight:vid.search\"></span>\n" +
-    "                    </small>\n" +
-    "                </h4>\n" +
+    "                        <small>\n" +
+    "                            <span ng-bind-html=\"item.series_title | highlight:vid.search\"></span>\n" +
+    "                        </small>\n" +
+    "                    </h4>\n" +
     "\n" +
+    "                    <div class=\"details-context\">\n" +
+    "                        <span ng-bind-html=\"item.call_number | highlight:vid.search\"></span>\n" +
+    "                        <span ng-bind-html=\"item.genre | highlight:vid.genre\" ng-if=\"item.genre\"></span>\n" +
+    "                        <span ng-bind-html=\"item.language | highlight:vid.language\" ng-if=\"item.language\"></span>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "                    <p class=\"text-justify\" ng-bind-html=\"item.notes | highlight:vid.search\"></p>\n" +
+    "                </div>\n" +
     "                <div class=\"details-context\">\n" +
-    "                    <span ng-bind-html=\"item.call_number | highlight:vid.search\"></span>\n" +
-    "                    <span ng-bind-html=\"item.genre | highlight:vid.genre\" ng-if=\"item.genre\"></span>\n" +
-    "                    <span ng-bind-html=\"item.language | highlight:vid.language\" ng-if=\"item.language\"></span>\n" +
+    "                    <span ng-bind-html=\"item.keywords | highlight:vid.search\"></span>\n" +
     "                </div>\n" +
-    "\n" +
-    "                <p class=\"text-justify\" ng-bind-html=\"item.notes | highlight:vid.search\"></p>\n" +
     "            </div>\n" +
-    "            <div class=\"details-context\">\n" +
-    "                <span ng-bind-html=\"item.keywords | highlight:vid.search\"></span>\n" +
+    "\n" +
+    "\n" +
+    "            <div class=\"text-center\">\n" +
+    "                <pagination class=\"pagination-sm\" ng-model=\"pager.page\" total-items=\"pager.totalItems\" max-size=\"pager.maxSize\" boundary-links=\"true\" rotate=\"false\" items-per-page=\"pager.perPage\" ng-change=\"pageChange()\" ng-if=\"pager.totalItems > pager.perPage\"></pagination>\n" +
     "            </div>\n" +
-    "        </div>\n" +
     "\n" +
-    "\n" +
-    "        <div class=\"text-center\">\n" +
-    "            <pagination class=\"pagination-sm\" ng-model=\"pager.page\" total-items=\"pager.totalItems\" max-size=\"pager.maxSize\" boundary-links=\"true\" rotate=\"false\" items-per-page=\"pager.perPage\" ng-change=\"pageChange()\" ng-if=\"pager.totalItems > pager.perPage\"></pagination>\n" +
-    "        </div>\n" +
-    "\n" +
-    "        <div class=\"alert alert-warning text-center\" role=\"alert\" ng-show=\"pager.totalItems < 1\">\n" +
-    "            <h2>No results found <span ng-if=\"vid.search\"> for \"{{vid.search}}\"</span></h2>\n" +
+    "            <div class=\"alert alert-warning text-center\" role=\"alert\" ng-show=\"pager.totalItems < 1\">\n" +
+    "                <h2>No results found <span ng-if=\"vid.search\"> for \"{{vid.search}}\"</span></h2>\n" +
+    "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>");
 }]);
-;angular.module('ualib.musicSearch', [
+;/**
+ * @ngdoc overview
+ * @name index
+ *
+ * @description
+ * # The Music Library's Videos search application.
+ * ## URL route [/#/videos](http://www.lib.ua.edu/#/videos)
+ *
+ */
+
+angular.module('ualib.musicSearch', [
     'ngRoute',
     'ngResource',
     'ngAnimate',
@@ -144,23 +160,68 @@ angular.module("videos/videos-list.tpl.html", []).run(["$templateCache", functio
 
 angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musicSearch')
 
-/**
- * Transform the JSON response - this allows the transformed values to be cached via Angular's $resource service.
- */
+    /**
+     * @ngdoc service
+     * @name videos.videosFactory
+     *
+     * @requires ng.$resource
+     *
+     * @param {object} params Params object to pass to videos API
+     * @param {string} params.videos videos to show
+     *
+     * @description
+     * Angular Service to call musicSearch API
+     *
+     * @returns {$promise} A $resource promise
+     *
+     * @example
+     * videosFactory
+     *      .get({videos: 'showall'})
+     *      .$promise.then(function(data){
+     *          return data;
+     *      });
+     */
+
     .factory('videosFactory', ['$resource', function($resource){
+
         return $resource('//wwwdev2.lib.ua.edu/musicsearch/api/:videos', {videos: 'showall'}, {
             get: {
                 method: 'GET',
                 cache: true
             }
         });
-    }]);;angular.module('ualib.musicSearch')
+    }]);;/**
+ * @ngdoc overview
+ * @name videos
+ *
+ * @requires ngRoute
+ * @requires ngResource
+ * @requires ngAnimate
+ * @requires ngSanitize
+ * @requires angular-filter
+ * @requires ui-bootstrap
+ * @requires duScroll
+ * @requires ualib-ui
+ *
+ * @description
+ * # The Music Library's Videos search application.
+ * ## URL route [/#/videos](http://www.lib.ua.edu/#/videos)
+ *
+ */
+angular.module('ualib.musicSearch')
 
     .config(['$routeProvider', function($routeProvider){
         $routeProvider
             .when('/videos', {
                 reloadOnSearch: false,
                 resolve: {
+                    /**
+                     * @ngdoc service
+                     * @name videos.filters
+                     *
+                     * @description
+                     * Gets filters available for the videos search UI
+                     */
                     filters: ['videosFactory', function(videosFactory){
                         return videosFactory.get({videos: 'genres'})
                             .$promise.then(function(data){
@@ -183,6 +244,13 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                                 });
                             });
                     }],
+                    /**
+                     * @ngdoc service
+                     * @name videos.videos
+                     *
+                     * @description
+                     * Gets the list of videos available in the Music Library
+                     */
                     videos: ['videosFactory', function(videosFactory){
                         return videosFactory.get()
                             .$promise.then(function(data){
@@ -203,6 +271,21 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             });
     }])
 
+    /**
+     * @ngdoc controller
+     * @name videos.Controller:VideosListCtrl
+     *
+     * @requires $scope
+     * @requires $location
+     * @requires $document
+     * @requires $filter
+     * @requires videos.Resolve:filters
+     * @requires videos.Resolve:videos
+     *
+     * @description
+     * Controller for the `videos` route.
+     */
+
     .controller('VideosListCtrl', ['$scope', 'videos', 'filters', '$filter' ,'$location' ,'$document', function($scope, vid, filters, $filter, $location, $document){
         var videos = [];
 
@@ -210,7 +293,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
         filters.$promise.then(function(filterData){
             $scope.genres = filterData.genres;
             $scope.languages = filterData.languages;
-            
+
             vid.$promise.then(function(data){
                 videos = data.results;
 
@@ -254,7 +337,14 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             scopeToParams(newParams);
         }, true);
 
-
+        /**
+         * @ngdoc method
+         * @name videos.Controller:VideosListCtrl#$scope.resetFilters
+         * @methodOf videos.Controller:VideosListCtrl
+         *
+         * @description
+         * Method, exposed to `$scope`, that will reset the filters/pager to their default values.
+         */
         $scope.resetFilters = function(){
             $scope.vid = {
                 genre: '',
@@ -270,6 +360,15 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
             };
         };
 
+        /**
+         * @ngdoc method
+         * @name videos.Controller:VideosListCtrl#$scope.pageChange
+         * @methodOf videos.Controller:VideosListCtrl
+         *
+         * @description
+         * Method, exposed to `$scope`, that is triggered when navigating to another page.
+         * Once triggered, it will bind the new page value to the URI params and auto-scroll to the top of the page.
+         */
         $scope.pageChange = function(){
 
             scopeToParams({page: $scope.pager.page});
@@ -279,6 +378,12 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
         $scope.$on('$destroy', function(){
             filterWatcher();
         });
+
+        /**
+         * Maps Angular $scope variables to URI query params
+         *
+         * `$scope.tasty='chimichangas'` gets mapped to `http://url.com?tasty=chimichangas`
+         */
 
         function scopeToParams(scopeVals){
             angular.forEach(scopeVals, function(val, key){
@@ -305,6 +410,12 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
                 }
             });
         }
+
+        /**
+         * Maps URI query params to Angular $scope object
+         *
+         * `http://url.com?tasty=chimichangas` gets mapped to `$scope.tasty='chimichangas'`
+         */
 
         function paramsToScope(){
             var params = $location.search();
