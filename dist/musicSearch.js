@@ -4,7 +4,16 @@ angular.module("videos/videos-list.tpl.html", []).run(["$templateCache", functio
   $templateCache.put("videos/videos-list.tpl.html",
     "<div class=\"jumbotron-header\">\n" +
     "    <div class=\"jumbotron\">\n" +
+    "\n" +
     "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-12\">\n" +
+    "                    <ol class=\"breadcrumb\" typeof=\"BreadcrumbList\" vocab=\"http://schema.org/\">\n" +
+    "                        <li><a title=\"Go to The University of Alabama Libraries.\" href=\"/#/home\" class=\"home\">The University of Alabama Libraries</a></li>\n" +
+    "                        <li><a title=\"Go to Video Database.\" href=\"/#/videos\" class=\"post post-page\">Video Database</a></li>\n" +
+    "                    </ol>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
     "            <div class=\"row\">\n" +
     "                <div class=\"col-md-7\">\n" +
     "                    <h1>Video Database</h1>\n" +
